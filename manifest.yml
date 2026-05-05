@@ -1,0 +1,6 @@
+applications:
+  - name: mithra-portal
+    memory: 128M
+    buildpacks:
+      - staticfile_buildpack
+    path: dist

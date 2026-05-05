@@ -95,7 +95,7 @@ function ProfilePanel({ onClose }) {
           })}
         </div>
 
-        {/* Themes */}
+        {/* Themes
         <div className="p-4 border-t border-border">
           <p className="text-xs uppercase tracking-wide text-muted-foreground mb-4">
             Themes
@@ -112,7 +112,7 @@ function ProfilePanel({ onClose }) {
               Dark
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
