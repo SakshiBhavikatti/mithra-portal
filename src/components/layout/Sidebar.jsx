@@ -53,15 +53,15 @@ function Sidebar() {
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
       className={`
-        h-screen bg-slate-950 text-white border-r border-slate-800
+        h-screen bg-sidebar text-sidebar-foreground border-r border-sidebar-border
         transition-all duration-300 ease-in-out
         ${expanded ? "w-64" : "w-20"}
         flex flex-col
       `}
     >
       {/* Logo */}
-      <div className="h-20 flex items-center justify-center border-b border-slate-800">
-        <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-bold">
+      <div className="h-20 flex items-center justify-center border-b border-sidebar-border">
+        <div className="w-10 h-10 rounded-xl bg-sidebar-primary text-sidebar-primary-foreground flex items-center justify-center font-bold">
           M
         </div>
       </div>
@@ -77,12 +77,12 @@ function Sidebar() {
               onClick={() => setActive(item.name)}
               title={!expanded ? item.name : ""}
               className={`
-                w-full flex items-center gap-4 px-4 py-3 rounded-xl
+                w-full flex items-center gap-4 px-4 py-3 rounded-2xl
                 transition-all duration-200
                 ${
                   active === item.name
-                    ? "bg-blue-600"
-                    : "hover:bg-slate-800"
+                    ? "bg-sidebar-primary text-sidebar-primary-foreground"
+                    : "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                 }
               `}
             >
@@ -103,7 +103,7 @@ function Sidebar() {
         {/* More Button */}
         <button
           onClick={() => setShowMore(!showMore)}
-          className="w-full flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-slate-800 transition-all"
+          className="w-full flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all"
         >
           <Ellipsis className="w-5 h-5 min-w-[20px]" />
 

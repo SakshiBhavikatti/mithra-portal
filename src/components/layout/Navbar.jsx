@@ -1,8 +1,10 @@
 import { Bell, Search, Moon, Sun, User } from "lucide-react";
 import { useEffect, useState } from "react";
+import ProfilePanel from "@/components/dashboard/ProfilePanel";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   // Load saved theme on mount
   useEffect(() => {
@@ -82,9 +84,16 @@ function Navbar() {
         </button>
 
         {/* Profile */}
-        <button className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent transition-colors">
+        <button
+        onClick={() => setProfileOpen(!profileOpen)}
+        className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent transition-colors"
+        >
           <User className="w-5 h-5 text-foreground" />
         </button>
+
+        {profileOpen && (
+        <ProfilePanel onClose={() => setProfileOpen(false)} />
+        )}
       </div>
     </nav>
   );
