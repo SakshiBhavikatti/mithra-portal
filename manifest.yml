@@ -1,5 +1,5 @@
 applications:
-  - name: mithra-portal
+  - name: toyota-mithra
     memory: 128M
     buildpacks:
       - staticfile_buildpack
