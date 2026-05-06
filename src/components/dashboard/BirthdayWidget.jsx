@@ -9,6 +9,29 @@ const birthdays = [
   { name: "Employee 4", date: "30 May" },
 ];
 
+const pastelThemes = [
+  {
+    cardBg: "bg-pink-50 dark:bg-pink-950/40",
+    iconBg: "bg-pink-100 dark:bg-pink-900/50",
+    iconColor: "text-pink-500 dark:text-pink-300",
+  },
+  {
+    cardBg: "bg-orange-50 dark:bg-orange-950/40",
+    iconBg: "bg-orange-100 dark:bg-orange-900/50",
+    iconColor: "text-orange-500 dark:text-orange-300",
+  },
+  {
+    cardBg: "bg-red-50 dark:bg-red-950/40",
+    iconBg: "bg-red-100 dark:bg-red-900/50",
+    iconColor: "text-red-500 dark:text-red-300",
+  },
+  {
+    cardBg: "bg-teal-50 dark:bg-teal-950/40",
+    iconBg: "bg-teal-100 dark:bg-teal-900/50",
+    iconColor: "text-teal-500 dark:text-teal-300",
+  },
+];
+
 const flipVariants = {
   initial: (direction) => ({
     rotateY: direction > 0 ? 90 : -90,
@@ -49,6 +72,7 @@ function BirthdayWidget() {
   };
 
   const employee = birthdays[currentIndex];
+  const color = pastelThemes[currentIndex % pastelThemes.length];
 
   return (
     <div className="h-full rounded-2xl bg-card border border-border hover:bg-accent/20 transition-all p-5 flex flex-col">
@@ -86,16 +110,23 @@ function BirthdayWidget() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full min-h-[150px] rounded-xl bg-background border border-border p-10 hover:bg-accent/10 transition-all"
-            style={{ transformStyle: "preserve-3d" }}
+            className={`w-full min-h-[150px] rounded-xl border border-border p-10 transition-all hover:shadow-sm ${color.cardBg}`}
+            style={{
+              transformStyle: "preserve-3d",
+            }}
           >
-            <div className="flex items-center gap-3">
-              <Cake className="w-8 h-8 text-primary" />
+            <div className="flex items-center gap-4">
+              <div
+                className={`w-12 h-12 rounded-2xl flex items-center justify-center ${color.iconBg}`}
+              >
+                <Cake className={`w-6 h-6 ${color.iconColor}`} />
+              </div>
 
               <div>
                 <h3 className="font-medium text-foreground">
                   {employee.name}
                 </h3>
+
                 <p className="text-sm text-muted-foreground">
                   Birthday: {employee.date}
                 </p>

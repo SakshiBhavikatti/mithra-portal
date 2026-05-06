@@ -11,18 +11,38 @@ import {
 } from "lucide-react";
 
 const apps = [
-  { title: "Birthday Hamper", icon: <Gift /> },
-  { title: "E-Forms", icon: <FileText /> },
-  { title: "Company Loans", icon: <Landmark /> },
-  { title: "Grievance", icon: <ShieldAlert /> },
-  { title: "Metro Cash & Carry", icon: <ShoppingBag /> },
-  { title: "Value Analysis", icon: <BarChart3 /> },
-  { title: "KRONOS", icon: <Calendar /> },
-  { title: "Make My Trip", icon: <Plane /> },
-  { title: "Travel Desk", icon: <Plane /> },
-  { title: "Expense Claims", icon: <FileText /> },
-  { title: "Insurance", icon: <ShieldAlert /> },
-  { title: "Benefits", icon: <Gift /> },
+  {
+    title: "Birthday Hamper",
+    icon: <Gift />,
+  },
+  {
+    title: "E-Forms",
+    icon: <FileText />,
+  },
+  {
+    title: "Company Loans",
+    icon: <Landmark />,
+  },
+  {
+    title: "Grievance",
+    icon: <ShieldAlert />,
+  },
+  {
+    title: "Metro Cash & Carry",
+    icon: <ShoppingBag />,
+  },
+  {
+    title: "Value Analysis",
+    icon: <BarChart3 />,
+  },
+  {
+    title: "KRONOS",
+    icon: <Calendar />,
+  },
+  {
+    title: "Make My Trip",
+    icon: <Plane />,
+  },
 ];
 
 function ApplicationsGrid() {
@@ -39,8 +59,8 @@ function ApplicationsGrid() {
       </div>
 
       <div className="flex-1 overflow-y-auto min-h-0 space-y-4 pr-2">
-        {apps.map((app) => (
-          <AppCard key={app.title} {...app} />
+        {apps.map((app, index) => (
+          <AppCard key={app.title} {...app} index={index} />
         ))}
       </div>
     </section>

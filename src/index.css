@@ -63,6 +63,27 @@
   --color-foreground: var(--foreground);
   --color-background: var(--background);
 
+    --color-card-blue: var(--card-blue);
+  --color-card-blue-border: var(--card-blue-border);
+
+  --color-card-pink: var(--card-pink);
+  --color-card-pink-border: var(--card-pink-border);
+
+  --color-card-green: var(--card-green);
+  --color-card-green-border: var(--card-green-border);
+
+  --color-card-red: var(--card-red);
+  --color-card-red-border: var(--card-red-border);
+
+  --color-card-orange: var(--card-orange);
+  --color-card-orange-border: var(--card-orange-border);
+
+  --color-card-purple: var(--card-purple);
+  --color-card-purple-border: var(--card-purple-border);
+
+  --color-card-teal: var(--card-teal);
+  --color-card-teal-border: var(--card-teal-border);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -74,7 +95,7 @@
 
 /* LIGHT MODE — Palette B */
 :root {
-  --background: oklch(0.98 0.01 260); /* #F7F9FD */
+  --background: oklch(94.704% 0.01673 259.501); /* #F7F9FD */
   --foreground: oklch(0.23 0.04 285); /* #1E1B4B */
 
   --card: oklch(1 0 0); /* white */
@@ -103,8 +124,29 @@
 
   --radius: 1rem;
 
+    --card-blue: #EFF6FF;
+  --card-blue-border: #DBEAFE;
+
+  --card-pink: #FFF1F7;
+  --card-pink-border: #FCE7F3;
+
+  --card-green: #ECFDF5;
+  --card-green-border: #D1FAE5;
+
+  --card-red: #FEF2F2;
+  --card-red-border: #FEE2E2;
+
+  --card-orange: #FFF7ED;
+  --card-orange-border: #FED7AA;
+
+  --card-purple: #F5F3FF;
+  --card-purple-border: #EDE9FE;
+
+  --card-teal: #F0FDFA;
+  --card-teal-border: #CCFBF1;
+
   /* Sidebar */
-  --sidebar: oklch(0.33 0.11 290); /* #312E81 */
+  --sidebar: oklch(43.135% 0.13709 291.216); /* #312E81 */
   --sidebar-foreground: oklch(0.97 0.01 255);
 
   --sidebar-primary: oklch(0.63 0.19 285);
@@ -145,6 +187,27 @@
   --border: oklch(0.32 0.04 270);
   --input: oklch(0.42 0.12 285);
   --ring: oklch(0.73 0.16 285);
+
+    --card-blue: #1E3A5F;
+  --card-blue-border: #2563EB;
+
+  --card-pink: #4A2238;
+  --card-pink-border: #DB2777;
+
+  --card-green: #1D3B2A;
+  --card-green-border: #10B981;
+
+  --card-red: #4A1D1D;
+  --card-red-border: #EF4444;
+
+  --card-orange: #4A2A12;
+  --card-orange-border: #F97316;
+
+  --card-purple: #312E81;
+  --card-purple-border: #8B5CF6;
+
+  --card-teal: #134E4A;
+  --card-teal-border: #14B8A6;
 
   --sidebar: oklch(0.33 0.11 290); /* same sidebar */
   --sidebar-foreground: oklch(0.96 0.01 260);

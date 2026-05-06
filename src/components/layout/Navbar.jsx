@@ -34,7 +34,9 @@ function Navbar() {
   };
 
   return (
-    <nav className="h-16 bg-card border-b border-border backdrop-blur-md px-6 flex items-center justify-between sticky top-0 z-50">
+    <nav className="h-16 bg-card border-b border-border backdrop-blur-md px-6 flex items-center justify-between sticky top-0 z-50"
+    style={{ backgroundColor: "var(--background)" }}
+    >
       {/* Left */}
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-sm">
@@ -45,18 +47,17 @@ function Navbar() {
           Mithra Portal
         </h1>
       </div>
+{/* Search */}
+<div className="w-[38%] relative">
+  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70" />
 
-      {/* Search */}
-      <div className="w-[38%] relative">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-
-        <input
-          type="text"
-          placeholder="Search..."
-          className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-border bg-secondary shadow-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-2 focus:ring-ring transition-all"
-          />
-      </div>
-
+  <input
+    type="text"
+    placeholder="Search..."
+    className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-border shadow-sm text-white placeholder:text-white/60 outline-none focus:ring-2 focus:ring-ring transition-all"
+    style={{ backgroundColor: "var(--sidebar)" }}
+  />
+</div>
       {/* Right */}
       <div className="flex items-center gap-5">
         {/* Theme Toggle */}
