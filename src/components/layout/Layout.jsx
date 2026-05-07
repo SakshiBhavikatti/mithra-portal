@@ -7,11 +7,17 @@ function Layout({ children }) {
     <div className="flex h-screen overflow-hidden bg-background text-foreground">
       <Sidebar />
 
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-w-0">
         <Navbar />
         <AnnouncementBar />
 
-        <main className="flex-1 overflow-y-auto p-8 bg-background">
+        <main
+          className="
+            flex-1 overflow-y-auto
+            p-4 md:p-8
+            bg-background
+          "
+        >
           {children}
         </main>
       </div>

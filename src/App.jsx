@@ -4,10 +4,12 @@ import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <Layout>
-      <Dashboard />
-    </Layout>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout><Dashboard /></Layout>} />
+      </Routes>
+    </BrowserRouter>
   );
-}
-
+} 
+    
 export default App;

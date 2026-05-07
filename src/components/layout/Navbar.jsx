@@ -1,12 +1,12 @@
 import { Bell, Search, Moon, Sun, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import ProfilePanel from "@/components/dashboard/ProfilePanel";
+import toyotaNameLogo from "../../assets/toyota_icon_name.png";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
 
-  // Load saved theme on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
 
@@ -34,32 +34,46 @@ function Navbar() {
   };
 
   return (
-    <nav className="h-16 bg-card border-b border-border backdrop-blur-md px-6 flex items-center justify-between sticky top-0 z-50"
-    style={{ backgroundColor: "var(--background)" }}
+    <nav
+      className="
+        h-16 border-b border-border backdrop-blur-md
+        px-4 md:px-6
+        flex items-center justify-between
+        sticky top-0 z-40
+        gap-3
+      "
+      style={{ backgroundColor: "var(--background)" }}
     >
       {/* Left */}
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-sm">
-          <span className="text-primary-foreground font-bold text-lg">M</span>
-        </div>
-
-        <h1 className="font-bold text-xl text-foreground tracking-tight">
-          Mithra Portal
-        </h1>
+      <div className="flex items-center gap-3 ml-14 md:ml-0">
+        <img
+          src={toyotaNameLogo}
+          alt="Toyota"
+          className="h-14 md:h-20 w-auto object-contain"
+        />
       </div>
-{/* Search */}
-<div className="w-[38%] relative">
-  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70" />
 
-  <input
-    type="text"
-    placeholder="Search..."
-    className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-border shadow-sm text-white placeholder:text-white/60 outline-none focus:ring-2 focus:ring-ring transition-all"
-    style={{ backgroundColor: "var(--sidebar)" }}
-  />
-</div>
+      {/* Search */}
+      <div className="flex-1 max-w-md relative">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70" />
+
+        <input
+          type="text"
+          placeholder="Search..."
+          className="
+            w-full pl-11 pr-4 py-2.5
+            rounded-xl border border-border
+            shadow-sm text-white
+            placeholder:text-white/60
+            outline-none focus:ring-2 focus:ring-ring
+            transition-all
+          "
+          style={{ backgroundColor: "var(--sidebar)" }}
+        />
+      </div>
+
       {/* Right */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-2 md:gap-5">
         {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
@@ -86,14 +100,14 @@ function Navbar() {
 
         {/* Profile */}
         <button
-        onClick={() => setProfileOpen(!profileOpen)}
-        className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent transition-colors"
+          onClick={() => setProfileOpen(!profileOpen)}
+          className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent transition-colors"
         >
           <User className="w-5 h-5 text-foreground" />
         </button>
 
         {profileOpen && (
-        <ProfilePanel onClose={() => setProfileOpen(false)} />
+          <ProfilePanel onClose={() => setProfileOpen(false)} />
         )}
       </div>
     </nav>
