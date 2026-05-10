@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Heart, MessageCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 function LatestArticles() {
   const [articles, setArticles] = useState([
@@ -61,12 +62,17 @@ function LatestArticles() {
   };
 
   return (
-    <div className="h-full rounded-2xl bg-card border border-border hover:bg-accent/20 p-5 flex flex-col transition-colors">
-      <h2 className="text-lg font-semibold text-foreground mb-4">
+    <div className="flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 transition-colors hover:bg-accent/20 sm:p-5">
+      <h2 className="mb-3 text-lg font-semibold text-foreground sm:mb-4">
         Latest Articles
       </h2>
 
-      <div className="flex-1 overflow-y-auto min-h-0 space-y-3 pr-2">
+      <div
+        className={cn(
+          "min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain pr-1 sm:pr-2",
+          "max-lg:max-h-[min(58vh,480px)]"
+        )}
+      >
         {articles.map((article, index) => (
           <div
             key={index}

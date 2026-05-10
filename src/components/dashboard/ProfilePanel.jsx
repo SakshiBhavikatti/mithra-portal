@@ -6,8 +6,10 @@ import {
   SlidersHorizontal,
   X,
 } from "lucide-react";
+import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 
 function ProfilePanel({ onClose }) {
+  useBodyScrollLock(true);
   const menuItems = [
     {
       label: "My Profile",
@@ -42,15 +44,15 @@ function ProfilePanel({ onClose }) {
       {/* Panel */}
       <div
         className="
-          fixed z-50
-          top-16 right-2 md:right-4
-          w-[95vw] max-w-80
-          h-[calc(100vh-5rem)]
+          fixed z-[55]
+          top-14 right-[max(0.5rem,env(safe-area-inset-right,0px))] sm:top-16 md:right-4
+          left-auto
+          w-[min(calc(100vw-1rem),18rem)] md:w-[95vw] md:max-w-80
+          h-auto max-h-[min(24rem,78dvh)] md:h-[calc(100vh-5rem)] md:max-h-[calc(100vh-5rem)]
           bg-card border border-border
           rounded-2xl md:rounded-3xl
           shadow-2xl
-          flex flex-col
-          overflow-hidden
+          flex flex-col overflow-hidden
         "
       >
         {/* Header */}
@@ -68,7 +70,7 @@ function ProfilePanel({ onClose }) {
         </div>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 min-h-0 overflow-y-auto overscroll-y-contain touch-pan-y">
           
           {/* User Info */}
           <div className="p-5 md:p-6 border-b border-border text-center">

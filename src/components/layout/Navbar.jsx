@@ -36,78 +36,74 @@ function Navbar() {
   return (
     <nav
       className="
-  h-16
-  w-full
-  min-w-0
-  border-b border-border backdrop-blur-md
-  px-3 md:px-6
-  flex items-center justify-between
+  @container/nav
+  flex h-14 min-h-14 w-full min-w-0 items-center justify-between gap-1.5
+  border-b border-border px-2.5 backdrop-blur-md
+  pt-[env(safe-area-inset-top,0px)]
+  sm:h-16 sm:min-h-16 sm:gap-2 sm:px-4
+  md:gap-3 md:px-6
   sticky top-0 z-40
-  gap-2 md:gap-3
 "
       style={{ backgroundColor: "var(--background)" }}
     >
-      {/* Left */}
-      <div className="flex items-center gap-3 ml-14 md:ml-0">
+      <div className="flex shrink-0 items-center pl-14 md:pl-0">
         <img
           src={toyotaNameLogo}
           alt="Toyota"
-          className="h-14 md:h-20 w-auto object-contain"
+          className="hidden h-8 w-auto max-w-[min(9rem,28vw)] object-contain @min-[52rem]/nav:block sm:h-9 md:h-11"
         />
       </div>
 
-      {/* Search */}
-      <div className="flex-1 min-w-0 max-w-md relative">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70" />
+      <div className="relative min-w-0 max-w-md flex-1">
+        <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-white/70 sm:left-3.5" />
 
         <input
           type="text"
           placeholder="Search..."
           className="
-  w-full min-w-0
-  pl-11 pr-4 py-2.5
-  rounded-xl border border-border
-  shadow-sm text-white
-  placeholder:text-white/60
-  outline-none focus:ring-2 focus:ring-ring
-  transition-all
+  w-full min-w-0 rounded-lg border border-border py-2 pl-9 pr-3
+  text-sm text-white shadow-sm outline-none transition-all
+  placeholder:text-sm placeholder:text-white/60
+  focus:ring-2 focus:ring-ring
+  sm:rounded-xl sm:py-2.5 sm:pl-10 sm:pr-3.5 sm:text-base sm:placeholder:text-base
 "
           style={{ backgroundColor: "var(--sidebar)" }}
         />
       </div>
 
-      {/* Right */}
-      <div className="flex items-center gap-2 md:gap-5">
-        {/* Theme Toggle */}
+      <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 md:gap-4">
         <button
+          type="button"
           onClick={toggleTheme}
-          className="relative w-14 h-8 rounded-full transition-all duration-300 flex items-center px-1 bg-secondary border border-border"
+          className="relative flex h-7 w-12 shrink-0 items-center rounded-full border border-border bg-secondary px-0.5 transition-all duration-300 sm:h-8 sm:w-14 sm:px-1"
         >
           <div
-            className={`w-6 h-6 rounded-full bg-card shadow-md flex items-center justify-center transform transition-all duration-300 ${
-              darkMode ? "translate-x-6" : "translate-x-0"
+            className={`flex size-5 items-center justify-center rounded-full bg-card shadow-md transition-transform duration-300 sm:size-6 ${
+              darkMode ? "translate-x-5 sm:translate-x-6" : "translate-x-0"
             }`}
           >
             {darkMode ? (
-              <Moon className="w-3.5 h-3.5 text-primary" />
+              <Moon className="size-3 text-primary sm:size-3.5" />
             ) : (
-              <Sun className="w-3.5 h-3.5 text-primary" />
+              <Sun className="size-3 text-primary sm:size-3.5" />
             )}
           </div>
         </button>
 
-        {/* Notifications */}
-        <button className="relative p-2 rounded-xl hover:bg-accent transition-colors">
-          <Bell className="w-5 h-5 text-foreground" />
-          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full"></span>
+        <button
+          type="button"
+          className="relative shrink-0 rounded-lg p-1.5 hover:bg-accent sm:rounded-xl sm:p-2"
+        >
+          <Bell className="size-[1.15rem] text-foreground sm:size-5" />
+          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-red-500"></span>
         </button>
 
-        {/* Profile */}
         <button
+          type="button"
           onClick={() => setProfileOpen(!profileOpen)}
-          className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent transition-colors"
+          className="flex size-8 shrink-0 items-center justify-center rounded-full border border-border bg-card hover:bg-accent sm:size-9 md:size-10"
         >
-          <User className="w-5 h-5 text-foreground" />
+          <User className="size-[1.05rem] text-foreground sm:size-5" />
         </button>
 
         {profileOpen && (

@@ -75,8 +75,7 @@ function BirthdayWidget() {
   const color = pastelThemes[currentIndex % pastelThemes.length];
 
   return (
-    <div className="w-full min-w-[280px] min-h-[260px] rounded-2xl bg-card border border-border hover:bg-accent/20 transition-all p-4 md:p-5 flex flex-col overflow-hidden">
-      
+    <div className="flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 transition-all hover:bg-accent/20 md:p-5">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-base md:text-lg font-semibold text-foreground">
@@ -124,7 +123,6 @@ function BirthdayWidget() {
             }}
           >
             <div className="flex items-center gap-3 md:gap-4">
-              
               <div
                 className={`
                   w-10 h-10 md:w-12 md:h-12
@@ -147,7 +145,6 @@ function BirthdayWidget() {
                   Birthday: {employee.date}
                 </p>
               </div>
-
             </div>
           </motion.div>
         </AnimatePresence>

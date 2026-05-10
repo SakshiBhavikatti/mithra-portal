@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 import {
   House,
   Newspaper,
@@ -66,17 +67,7 @@ function Sidebar() {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  useEffect(() => {
-    if (isMobile && mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isMobile, mobileOpen]);
+  useBodyScrollLock(isMobile && mobileOpen);
 
   const allItems = showMore
     ? [...primaryItems, ...extraItems]
@@ -87,8 +78,9 @@ function Sidebar() {
       {/* Mobile Toggle Button */}
       {isMobile && (
         <button
+          type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="fixed top-3 left-3 z-50 md:hidden p-2 rounded-xl bg-sidebar text-sidebar-foreground shadow-md"
+          className="fixed z-50 rounded-xl bg-sidebar p-2 text-sidebar-foreground shadow-md md:hidden left-[max(0.75rem,env(safe-area-inset-left,0px))] top-[max(0.75rem,env(safe-area-inset-top,0px))]"
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -111,15 +103,13 @@ function Sidebar() {
         }}
         className={`
           fixed md:relative
-          md:translate-x-0
-          top-0 left-0
-          z-[60]
-          h-auto min-h-screen self-stretch
+          top-0 left-0 z-[60]
           shrink-0
+          flex min-h-0 flex-col overflow-hidden
+          h-dvh max-h-dvh md:h-dvh md:max-h-dvh md:min-h-0
           bg-sidebar text-sidebar-foreground
           border-r border-sidebar-border
           transition-all duration-300 ease-in-out
-          flex flex-col
           ${
             isMobile
               ? mobileOpen
@@ -132,16 +122,16 @@ function Sidebar() {
         `}
       >
         {/* Logo */}
-        <div className="h-20 flex items-center justify-center border-b border-sidebar-border">
+        <div className="flex h-24 shrink-0 items-center justify-center border-b border-sidebar-border px-2">
           <img
             src={toyotaIcon}
             alt="Toyota"
-            className="w-12 h-12 object-contain"
+            className="h-14 w-auto max-w-[5.5rem] object-contain"
           />
         </div>
 
         {/* Menu */}
-        <div className="flex-1 overflow-y-auto py-4 px-2 space-y-2">
+        <div className="flex-1 min-h-0 overflow-y-auto overscroll-y-contain py-4 px-2 pr-1.5 space-y-2 touch-pan-y [scrollbar-gutter:stable]">
           {allItems.map((item) => {
             const Icon = item.icon;
 

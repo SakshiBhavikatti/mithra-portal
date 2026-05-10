@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import AppCard from "./AppCard";
 import {
   Gift,
@@ -8,7 +9,11 @@ import {
   BarChart3,
   Calendar,
   Plane,
+  LayoutGrid,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const apps = [
   {
@@ -46,23 +51,74 @@ const apps = [
 ];
 
 function ApplicationsGrid() {
-  return (
-    <section className="h-full rounded-2xl bg-card border border-border hover:bg-accent/20 p-5 flex flex-col">
-      <div className="mb-5">
-        <h2 className="text-xl font-semibold text-foreground">
-          Applications
-        </h2>
+  const [narrowOpen, setNarrowOpen] = useState(false);
+  const [isLgUp, setIsLgUp] = useState(
+    typeof window !== "undefined"
+      ? window.matchMedia("(min-width: 1024px)").matches
+      : false
+  );
 
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setIsLgUp(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const showList = isLgUp || narrowOpen;
+
+  return (
+    <section
+      className={cn(
+        "flex min-h-0 flex-col rounded-2xl border border-border bg-card p-4 sm:p-5 hover:bg-accent/20",
+        "h-full max-lg:max-h-[min(70vh,520px)] lg:min-h-0 lg:flex-1"
+      )}
+    >
+      <button
+        type="button"
+        onClick={() => setNarrowOpen((o) => !o)}
+        className="lg:hidden w-full flex items-center justify-between gap-3 text-left rounded-xl px-2 py-2 -mx-1 shrink-0 hover:bg-accent/40 transition-colors"
+        aria-expanded={narrowOpen}
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <LayoutGrid className="w-5 h-5 text-primary shrink-0" />
+          <div className="min-w-0">
+            <h2 className="font-semibold text-foreground text-xl">
+              Applications
+            </h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Internal and external tools
+            </p>
+          </div>
+        </div>
+        {narrowOpen ? (
+          <ChevronUp className="w-5 h-5 text-muted-foreground shrink-0" />
+        ) : (
+          <ChevronDown className="w-5 h-5 text-muted-foreground shrink-0" />
+        )}
+      </button>
+
+      <div className="mb-5 shrink-0 hidden lg:block">
+        <h2 className="text-xl font-semibold text-foreground">Applications</h2>
         <p className="text-sm text-muted-foreground mt-1">
           Internal and external tools
         </p>
       </div>
 
-      <div className="flex-1 overflow-y-auto min-h-0 space-y-4 pr-2">
-        {apps.map((app, index) => (
-          <AppCard key={app.title} {...app} index={index} />
-        ))}
-      </div>
+      {showList && (
+        <div
+          className={cn(
+            "min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain pr-1 sm:space-y-4 sm:pr-2",
+            "max-lg:mt-4 max-lg:max-h-[min(58vh,480px)]",
+            "lg:mt-0"
+          )}
+        >
+          {apps.map((app, index) => (
+            <AppCard key={app.title} {...app} index={index} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
