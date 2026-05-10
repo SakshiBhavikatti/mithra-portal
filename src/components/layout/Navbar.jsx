@@ -36,12 +36,15 @@ function Navbar() {
   return (
     <nav
       className="
-        h-16 border-b border-border backdrop-blur-md
-        px-4 md:px-6
-        flex items-center justify-between
-        sticky top-0 z-40
-        gap-3
-      "
+  h-16
+  w-full
+  min-w-0
+  border-b border-border backdrop-blur-md
+  px-3 md:px-6
+  flex items-center justify-between
+  sticky top-0 z-40
+  gap-2 md:gap-3
+"
       style={{ backgroundColor: "var(--background)" }}
     >
       {/* Left */}
@@ -54,20 +57,21 @@ function Navbar() {
       </div>
 
       {/* Search */}
-      <div className="flex-1 max-w-md relative">
+      <div className="flex-1 min-w-0 max-w-md relative">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70" />
 
         <input
           type="text"
           placeholder="Search..."
           className="
-            w-full pl-11 pr-4 py-2.5
-            rounded-xl border border-border
-            shadow-sm text-white
-            placeholder:text-white/60
-            outline-none focus:ring-2 focus:ring-ring
-            transition-all
-          "
+  w-full min-w-0
+  pl-11 pr-4 py-2.5
+  rounded-xl border border-border
+  shadow-sm text-white
+  placeholder:text-white/60
+  outline-none focus:ring-2 focus:ring-ring
+  transition-all
+"
           style={{ backgroundColor: "var(--sidebar)" }}
         />
       </div>

@@ -55,7 +55,6 @@ function Sidebar() {
 
       setIsMobile(mobile);
 
-      // Close mobile sidebar when switching to desktop
       if (!mobile) {
         setMobileOpen(false);
       }
@@ -67,7 +66,6 @@ function Sidebar() {
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
-  // Prevent body scroll when mobile sidebar is open
   useEffect(() => {
     if (isMobile && mobileOpen) {
       document.body.style.overflow = "hidden";
@@ -112,9 +110,16 @@ function Sidebar() {
           if (!isMobile) setExpanded(false);
         }}
         className={`
-          fixed md:relative z-[60]
-          h-screen bg-sidebar text-sidebar-foreground border-r border-sidebar-border
-          transition-all duration-300 ease-in-out transform-gpu flex flex-col
+          fixed md:relative
+          md:translate-x-0
+          top-0 left-0
+          z-[60]
+          h-auto min-h-screen self-stretch
+          shrink-0
+          bg-sidebar text-sidebar-foreground
+          border-r border-sidebar-border
+          transition-all duration-300 ease-in-out
+          flex flex-col
           ${
             isMobile
               ? mobileOpen

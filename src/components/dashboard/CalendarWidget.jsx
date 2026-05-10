@@ -65,13 +65,15 @@ function CalendarWidget() {
   const color = cardColors[currentIndex];
 
   return (
-    <div className="h-full rounded-2xl bg-card border border-border hover:bg-accent/20 transition-all p-5 flex flex-col overflow-hidden">
+    <div className="w-full min-w-[280px] h-full rounded-2xl bg-card border border-border hover:bg-accent/20 transition-all p-4 md:p-5 flex flex-col overflow-hidden">
+      
+      {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-foreground">
+        <h2 className="text-base md:text-lg font-semibold text-foreground">
           Calendar
         </h2>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1 md:gap-2 shrink-0">
           <button
             onClick={prevCard}
             className="p-2 rounded-lg hover:bg-accent transition-colors"
@@ -88,6 +90,7 @@ function CalendarWidget() {
         </div>
       </div>
 
+      {/* Content */}
       <div
         className="flex-1 min-h-0 flex items-stretch overflow-hidden"
         style={{ perspective: "1200px" }}
@@ -100,49 +103,63 @@ function CalendarWidget() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className={`w-full h-full flex flex-col overflow-hidden rounded-xl border border-border p-3 transition-all hover:shadow-sm ${color.bg}`}
+            className={`
+              w-full flex flex-col overflow-hidden
+              rounded-xl border border-border
+              p-3 md:p-4
+              transition-all hover:shadow-sm
+              ${color.bg}
+            `}
             style={{ transformStyle: "preserve-3d" }}
           >
+            {/* Calendar View */}
             {currentIndex === 0 ? (
-  <div className="flex-1 min-h-0 flex flex-col">
-    <div className="flex items-center gap-3 mb-3">
-      <div
-        className={`w-9 h-9 rounded-xl flex items-center justify-center ${color.iconBg}`}
-      >
-        <CalendarDays
-          className={`w-4 h-4 ${color.iconColor}`}
-        />
-      </div>
+              <div className="flex-1 min-h-0 flex flex-col">
+                
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center ${color.iconBg}`}
+                  >
+                    <CalendarDays
+                      className={`w-4 h-4 ${color.iconColor}`}
+                    />
+                  </div>
 
-      <h3 className="font-medium text-sm text-foreground">
-        May 2026
-      </h3>
-    </div>
+                  <h3 className="font-medium text-sm text-foreground">
+                    May 2026
+                  </h3>
+                </div>
 
-    <div className="flex-1 min-h-0 overflow-y-auto pr-1">
-      <div className="grid grid-cols-7 gap-px text-center text-[10px] w-full">
-        {Array.from({ length: 31 }, (_, i) => (
-          <div
-            key={i}
-            className={`p-1 rounded-md relative ${
-              [12, 18, 25, 30].includes(i + 1)
-                ? "bg-white dark:bg-white/10 shadow-sm"
-                : ""
-            }`}
-          >
-            {i + 1}
+                <div className="flex-1 min-h-0 overflow-y-auto pr-1">
+                  <div className="grid grid-cols-7 gap-1 text-center text-[10px] sm:text-xs w-full">
+                    {Array.from({ length: 31 }, (_, i) => (
+                      <div
+                        key={i}
+                        className={`
+                          aspect-square flex items-center justify-center
+                          rounded-md relative
+                          ${
+                            [12, 18, 25, 30].includes(i + 1)
+                              ? "bg-white dark:bg-white/10 shadow-sm"
+                              : ""
+                          }
+                        `}
+                      >
+                        {i + 1}
 
-            {[12, 18, 25, 30].includes(i + 1) && (
-              <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-400" />
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-) : (
-              <div className="flex-1 min-h-0 flex flex-col gap-3">
-                <div className="flex items-center gap-3 mb-1">
+                        {[12, 18, 25, 30].includes(i + 1) && (
+                          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-400" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Reminder View */
+              <div className="flex-1 min-h-0 flex flex-col">
+                
+                <div className="flex items-center gap-3 mb-3">
                   <div
                     className={`w-9 h-9 rounded-xl flex items-center justify-center ${color.iconBg}`}
                   >
@@ -154,12 +171,12 @@ function CalendarWidget() {
                   </h3>
                 </div>
 
-                <div className="flex-1 min-h-0 space-y-2 overflow-y-auto pr-1">
+                <div className="flex-1 min-h-0 overflow-y-auto space-y-2 pr-1">
                   {reminders.map((reminder, index) => (
                     <div
                       key={index}
-                      className="rounded-xl bg-white/70 dark:bg-white/10 border border-border p-2"
-                      >
+                      className="rounded-xl bg-white/70 dark:bg-white/10 border border-border p-3"
+                    >
                       <p className="font-medium text-foreground text-sm">
                         {reminder.title}
                       </p>

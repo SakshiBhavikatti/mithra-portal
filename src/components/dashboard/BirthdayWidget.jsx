@@ -75,13 +75,15 @@ function BirthdayWidget() {
   const color = pastelThemes[currentIndex % pastelThemes.length];
 
   return (
-    <div className="h-full rounded-2xl bg-card border border-border hover:bg-accent/20 transition-all p-5 flex flex-col">
+    <div className="w-full min-w-[280px] min-h-[260px] rounded-2xl bg-card border border-border hover:bg-accent/20 transition-all p-4 md:p-5 flex flex-col overflow-hidden">
+      
+      {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-foreground">
+        <h2 className="text-base md:text-lg font-semibold text-foreground">
           Birthdays
         </h2>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1 md:gap-2 shrink-0">
           <button
             onClick={prevCard}
             className="p-2 rounded-lg hover:bg-accent transition-colors"
@@ -98,8 +100,9 @@ function BirthdayWidget() {
         </div>
       </div>
 
+      {/* Card */}
       <div
-        className="flex-1 flex items-center"
+        className="flex-1 flex items-center min-h-0"
         style={{ perspective: "1200px" }}
       >
         <AnimatePresence mode="wait" custom={direction}>
@@ -110,27 +113,41 @@ function BirthdayWidget() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className={`w-full min-h-[150px] rounded-xl border border-border p-10 transition-all hover:shadow-sm ${color.cardBg}`}
+            className={`
+              w-full rounded-xl border border-border
+              p-5 md:p-8
+              transition-all hover:shadow-sm
+              ${color.cardBg}
+            `}
             style={{
               transformStyle: "preserve-3d",
             }}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 md:gap-4">
+              
               <div
-                className={`w-12 h-12 rounded-2xl flex items-center justify-center ${color.iconBg}`}
+                className={`
+                  w-10 h-10 md:w-12 md:h-12
+                  rounded-2xl flex items-center justify-center
+                  shrink-0
+                  ${color.iconBg}
+                `}
               >
-                <Cake className={`w-6 h-6 ${color.iconColor}`} />
+                <Cake
+                  className={`w-5 h-5 md:w-6 md:h-6 ${color.iconColor}`}
+                />
               </div>
 
-              <div>
-                <h3 className="font-medium text-foreground">
+              <div className="min-w-0">
+                <h3 className="font-medium text-sm md:text-base text-foreground truncate">
                   {employee.name}
                 </h3>
 
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs md:text-sm text-muted-foreground">
                   Birthday: {employee.date}
                 </p>
               </div>
+
             </div>
           </motion.div>
         </AnimatePresence>
