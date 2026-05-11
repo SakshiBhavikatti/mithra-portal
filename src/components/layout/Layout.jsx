@@ -1,24 +1,25 @@
+// Layout.jsx
+
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import AnnouncementBar from "./AnnouncementBar";
 
 function Layout({ children }) {
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-sidebar text-foreground">
+    <div className="flex min-h-screen w-full bg-sidebar text-foreground">
       <Sidebar />
 
-      <div className="flex h-screen min-w-0 flex-1 flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-1 flex-col bg-background">
         <Navbar />
         <AnnouncementBar />
 
         <main
           className="
             flex-1
-            min-h-0
             min-w-0
             flex flex-col
-            overflow-hidden
             bg-background
+            overflow-x-hidden
             px-3 pt-3 pb-4
             sm:px-4 sm:pt-4 sm:pb-5
             md:px-6 md:py-6

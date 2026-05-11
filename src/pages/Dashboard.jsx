@@ -6,11 +6,11 @@ import CalendarWidget from "@/components/dashboard/CalendarWidget";
 
 function Dashboard() {
   return (
-    <div className="flex h-full min-h-0 w-full min-w-0 flex-1 flex-col overflow-hidden">
+    <div className="flex w-full min-w-0 flex-col">
       <div
         className="
-          flex h-full min-h-0 w-full flex-col overflow-y-auto
-          rounded-xl border border-border bg-card/80
+          w-full
+          rounded-xl bg-card/70
           shadow-sm backdrop-blur-sm
           sm:rounded-2xl md:rounded-3xl
           p-3 sm:p-4 md:p-5 lg:p-6
@@ -24,25 +24,27 @@ function Dashboard() {
             lg:items-stretch
           "
         >
+          {/* Applications */}
           <div
             className="
               min-w-0
-              max-lg:flex max-lg:min-h-0 max-lg:flex-col
-              lg:flex lg:h-[82vh] lg:max-h-[82vh] lg:min-h-0 lg:flex-col
+              lg:h-[78vh]
+              lg:min-h-0
+              flex flex-col
             "
           >
             <ApplicationsGrid />
           </div>
 
+          {/* Widgets */}
           <div
             className="
               grid min-w-0 w-full
               grid-cols-1 gap-3 sm:gap-4 md:gap-5 lg:gap-6
               md:grid-cols-2
-              max-lg:h-full max-lg:min-h-0
-              max-lg:[grid-template-rows:repeat(2,minmax(0,1fr))]
               lg:grid-rows-2
-              lg:h-[82vh] lg:max-h-[82vh] lg:min-h-0
+              lg:h-[78vh]
+              lg:min-h-0
             "
           >
             <div className="min-h-0 min-w-0 flex flex-col">
