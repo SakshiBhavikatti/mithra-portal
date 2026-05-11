@@ -113,11 +113,14 @@ function WorkAnniversary() {
             animate="animate"
             exit="exit"
             className={`
-              w-full rounded-xl border border-border
-              p-5 md:p-8
-              transition-all hover:shadow-sm
-              ${color.cardBg}
-            `}
+  w-full
+  min-h-[140px] md:min-h-[165px]
+  rounded-2xl border border-border
+  p-5 md:p-6
+  transition-all hover:shadow-md
+  flex items-center
+  ${color.cardBg}
+`}
             style={{
               transformStyle: "preserve-3d",
             }}
