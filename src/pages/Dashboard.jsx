@@ -6,10 +6,10 @@ import CalendarWidget from "@/components/dashboard/CalendarWidget";
 
 function Dashboard() {
   return (
-    <div className="flex min-h-0 w-full min-w-0 flex-1 flex-col">
+    <div className="flex h-full min-h-0 w-full min-w-0 flex-1 flex-col overflow-hidden">
       <div
         className="
-          flex w-full flex-1 flex-col
+          flex h-full min-h-0 w-full flex-col overflow-y-auto
           rounded-xl border border-border bg-card/80
           shadow-sm backdrop-blur-sm
           sm:rounded-2xl md:rounded-3xl
@@ -28,7 +28,7 @@ function Dashboard() {
             className="
               min-w-0
               max-lg:flex max-lg:min-h-0 max-lg:flex-col
-              lg:flex lg:h-[min(88dvh,920px)] lg:max-h-[min(88dvh,920px)] lg:min-h-0 lg:flex-col
+              lg:flex lg:h-[82vh] lg:max-h-[82vh] lg:min-h-0 lg:flex-col
             "
           >
             <ApplicationsGrid />
@@ -39,25 +39,25 @@ function Dashboard() {
               grid min-w-0 w-full
               grid-cols-1 gap-3 sm:gap-4 md:gap-5 lg:gap-6
               md:grid-cols-2
-              max-lg:h-full max-lg:min-h-0 max-lg:overflow-hidden
+              max-lg:h-full max-lg:min-h-0
               max-lg:[grid-template-rows:repeat(2,minmax(0,1fr))]
-              lg:grid-rows-2 lg:overflow-hidden
-              lg:h-[min(88dvh,920px)] lg:max-h-[min(88dvh,920px)] lg:min-h-0
+              lg:grid-rows-2
+              lg:h-[82vh] lg:max-h-[82vh] lg:min-h-0
             "
           >
-            <div className="min-h-0 min-w-0 max-lg:flex max-lg:h-full max-lg:min-h-0 max-lg:flex-col md:max-lg:min-h-[220px] lg:flex lg:h-full lg:min-h-0 lg:flex-col">
+            <div className="min-h-0 min-w-0 flex flex-col">
               <WorkAnniversary />
             </div>
 
-            <div className="min-h-0 min-w-0 max-lg:flex max-lg:h-full max-lg:min-h-0 max-lg:flex-col md:max-lg:min-h-[220px] lg:flex lg:h-full lg:min-h-0 lg:flex-col">
+            <div className="min-h-0 min-w-0 flex flex-col">
               <BirthdayWidget />
             </div>
 
-            <div className="min-h-0 min-w-0 max-lg:flex max-lg:h-full max-lg:min-h-0 max-lg:flex-col md:max-lg:min-h-[220px] lg:flex lg:h-full lg:min-h-0 lg:flex-col">
+            <div className="min-h-0 min-w-0 flex flex-col">
               <LatestArticles />
             </div>
 
-            <div className="min-h-0 min-w-0 max-lg:flex max-lg:h-full max-lg:min-h-0 max-lg:flex-col md:max-lg:min-h-[220px] lg:flex lg:h-full lg:min-h-0 lg:flex-col">
+            <div className="min-h-0 min-w-0 flex flex-col">
               <CalendarWidget />
             </div>
           </div>

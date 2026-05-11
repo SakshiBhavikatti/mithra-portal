@@ -1,8 +1,8 @@
 function AnnouncementBar() {
   return (
-    <div className="overflow-hidden border-b border-border bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 py-1.5 sm:py-2">
-      <div className="animate-marquee flex items-center gap-2 whitespace-nowrap px-3 text-xs sm:gap-3 sm:px-4 sm:text-sm">
-        <span className="shrink-0 rounded-full bg-primary/10 px-2 py-0.5 text-[0.65rem] font-semibold text-primary sm:px-2.5 sm:py-1 sm:text-xs">
+    <div className="overflow-hidden border-b border-border bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 py-2.5 sm:py-3">
+      <div className="animate-marquee flex items-center gap-3 whitespace-nowrap px-4 text-sm sm:gap-4 sm:px-5 sm:text-base">
+        <span className="shrink-0 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary sm:px-3.5 sm:py-1.5 sm:text-sm">
           Updates
         </span>
 
@@ -15,4 +15,3 @@ function AnnouncementBar() {
 }
 
 export default AnnouncementBar;
-

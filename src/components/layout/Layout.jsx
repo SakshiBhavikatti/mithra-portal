@@ -4,10 +4,10 @@ import AnnouncementBar from "./AnnouncementBar";
 
 function Layout({ children }) {
   return (
-    <div className="flex min-h-dvh w-full items-stretch bg-background text-foreground">
+    <div className="flex h-screen w-full overflow-hidden bg-sidebar text-foreground">
       <Sidebar />
 
-      <div className="flex min-h-dvh min-w-0 flex-1 flex-col">
+      <div className="flex h-screen min-w-0 flex-1 flex-col bg-background">
         <Navbar />
         <AnnouncementBar />
 
@@ -17,7 +17,7 @@ function Layout({ children }) {
             min-h-0
             min-w-0
             flex flex-col
-            overflow-x-hidden
+            overflow-hidden
             bg-background
             px-3 pt-3 pb-4
             sm:px-4 sm:pt-4 sm:pb-5
