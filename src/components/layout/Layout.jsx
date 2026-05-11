@@ -6,20 +6,24 @@ import AnnouncementBar from "./AnnouncementBar";
 
 function Layout({ children }) {
   return (
-    <div className="flex min-h-screen w-full bg-sidebar text-foreground">
+    <div className="flex h-screen w-full overflow-hidden bg-sidebar text-foreground">
       <Sidebar />
 
-      <div className="flex min-h-screen min-w-0 flex-1 flex-col bg-background">
-        <Navbar />
-        <AnnouncementBar />
+      <div className="flex h-screen min-w-0 flex-1 flex-col overflow-hidden bg-background">
+        {/* Fixed Top Section */}
+        <div className="shrink-0">
+          <Navbar />
+          <AnnouncementBar />
+        </div>
 
+        {/* Scrollable Dashboard Content Only */}
         <main
           className="
             flex-1
             min-w-0
-            flex flex-col
-            bg-background
+            overflow-y-auto
             overflow-x-hidden
+            bg-background
             px-3 pt-3 pb-4
             sm:px-4 sm:pt-4 sm:pb-5
             md:px-6 md:py-6

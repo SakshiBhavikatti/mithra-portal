@@ -11,15 +11,20 @@ function AppCard({ title, icon, index }) {
       className="w-full"
     >
       <Card
-        className={`
-          w-full
-          min-h-[100px]
-          cursor-pointer
-          transition-all duration-300 hover:shadow-md
-          border border-border
-          ${color.cardBg}
-        `}
-      >
+  className={`
+    w-full
+    min-h-[92px]
+    cursor-pointer
+    rounded-3xl
+    border border-white/20 dark:border-white/5
+    backdrop-blur-md
+    shadow-[0_6px_24px_rgba(0,0,0,0.06)]
+    transition-all duration-300
+    hover:-translate-y-1
+    hover:shadow-xl
+    ${color.cardBg}
+  `}
+>
         <CardContent className="flex items-center gap-3 md:gap-4 p-3 md:p-4 h-full">
           <div
             className={`

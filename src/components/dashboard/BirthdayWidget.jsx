@@ -34,21 +34,28 @@ const pastelThemes = [
 
 const flipVariants = {
   initial: (direction) => ({
-    rotateY: direction > 0 ? 90 : -90,
+    x: direction > 0 ? 40 : -40,
     opacity: 0,
+    scale: 0.96,
   }),
+
   animate: {
-    rotateY: 0,
+    x: 0,
     opacity: 1,
+    scale: 1,
     transition: {
-      duration: 0.3,
+      duration: 0.28,
+      ease: "easeOut",
     },
   },
+
   exit: (direction) => ({
-    rotateY: direction > 0 ? -90 : 90,
+    x: direction > 0 ? -40 : 40,
     opacity: 0,
+    scale: 0.96,
     transition: {
-      duration: 0.3,
+      duration: 0.22,
+      ease: "easeIn",
     },
   }),
 };
@@ -75,7 +82,8 @@ function BirthdayWidget() {
   const color = pastelThemes[currentIndex % pastelThemes.length];
 
   return (
-    <div className="flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 transition-all hover:bg-accent/20 md:p-5">
+    <div className="flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden rounded-3xl bg-white/45 dark:bg-white/[0.03]
+hover:bg-accent/20 dark:hover:bg-indigo-500/10 backdrop-blur-xl p-4 transition-all duration-300 hover:shadow-[0_12px_35px_rgba(0,0,0,0.10)] shadow-[0_8px_28px_rgba(0,0,0,0.06)] md:p-5">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-base md:text-lg font-semibold text-foreground">
@@ -115,15 +123,17 @@ function BirthdayWidget() {
             className={`
   w-full
   min-h-[140px] md:min-h-[165px]
-  rounded-2xl border border-border
+  rounded-3xl border border-white/20 dark:border-white/5
+shadow-[0_6px_24px_rgba(0,0,0,0.06)]
+backdrop-blur-md
   p-5 md:p-6
-  transition-all hover:shadow-md
+  transition-all duration-300 hover:-translate-y-1 hover:shadow-xl
   flex items-center
   ${color.cardBg}
 `}
-            style={{
-              transformStyle: "preserve-3d",
-            }}
+            // style={{
+            //   transformStyle: "preserve-3d",
+            // }}
           >
             <div className="flex items-center gap-3 md:gap-4">
               <div

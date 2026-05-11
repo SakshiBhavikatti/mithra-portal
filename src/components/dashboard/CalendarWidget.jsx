@@ -31,21 +31,28 @@ const cardColors = [
 
 const flipVariants = {
   initial: (direction) => ({
-    rotateY: direction > 0 ? 90 : -90,
+    x: direction > 0 ? 40 : -40,
     opacity: 0,
+    scale: 0.96,
   }),
+
   animate: {
-    rotateY: 0,
+    x: 0,
     opacity: 1,
+    scale: 1,
     transition: {
-      duration: 0.3,
+      duration: 0.28,
+      ease: "easeOut",
     },
   },
+
   exit: (direction) => ({
-    rotateY: direction > 0 ? -90 : 90,
+    x: direction > 0 ? -40 : 40,
     opacity: 0,
+    scale: 0.96,
     transition: {
-      duration: 0.3,
+      duration: 0.22,
+      ease: "easeIn",
     },
   }),
 };
@@ -67,8 +74,22 @@ function CalendarWidget() {
   const color = cardColors[currentIndex];
 
   return (
-    <div className="flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 transition-all hover:bg-accent/20 md:p-5">
-      {/* Header */}
+    <div
+  className="
+    flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden
+    rounded-3xl
+    bg-white/45 dark:bg-white/[0.03]
+    hover:bg-accent/20 dark:hover:bg-indigo-500/10
+    backdrop-blur-xl
+    p-4 md:p-5
+
+    shadow-[0_8px_28px_rgba(0,0,0,0.06)]
+    hover:shadow-[0_12px_35px_rgba(0,0,0,0.10)]
+
+    transition-all duration-300
+  "
+>
+  {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-base md:text-lg font-semibold text-foreground">
           Calendar
@@ -108,13 +129,22 @@ function CalendarWidget() {
             animate="animate"
             exit="exit"
             className={`
-              w-full flex flex-col min-h-min
-              rounded-xl border border-border
-              p-3 md:p-4
-              transition-all hover:shadow-sm
-              ${color.bg}
-            `}
-            style={{ transformStyle: "preserve-3d" }}
+  w-full flex flex-col min-h-min
+
+  rounded-3xl
+  border border-white/20 dark:border-white/5
+  backdrop-blur-md
+
+  shadow-[0_6px_24px_rgba(0,0,0,0.06)]
+
+  p-4 md:p-5
+
+  transition-all duration-300
+  hover:-translate-y-1
+  hover:shadow-xl
+
+  ${color.bg}
+`}
           >
             {/* Calendar View */}
             {currentIndex === 0 ? (
@@ -181,7 +211,21 @@ function CalendarWidget() {
                       <div
                         key={index}
                         className={cn(
-                          "rounded-xl border border-border p-3 md:p-4 flex items-center gap-3 md:gap-4 transition-shadow hover:shadow-md",
+                          `
+rounded-2xl
+border border-white/20 dark:border-white/5
+backdrop-blur-md
+
+p-3 md:p-4
+
+flex items-center gap-3 md:gap-4
+
+shadow-[0_4px_18px_rgba(0,0,0,0.05)]
+hover:shadow-[0_10px_28px_rgba(0,0,0,0.10)]
+
+hover:-translate-y-1
+transition-all duration-300
+`,
                           t.cardBg
                         )}
                       >

@@ -62,8 +62,24 @@ function LatestArticles() {
   };
 
   return (
-    <div className="flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 transition-colors hover:bg-accent/20 sm:p-5">
-      <h2 className="mb-3 text-lg font-semibold text-foreground sm:mb-4">
+    <div
+  className="
+    flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden
+
+    rounded-3xl
+    bg-white/45 dark:bg-white/[0.03]
+    hover:bg-accent/20 dark:hover:bg-indigo-500/10
+    backdrop-blur-xl
+
+    p-4 sm:p-5
+
+    shadow-[0_8px_28px_rgba(0,0,0,0.06)]
+    hover:shadow-[0_12px_35px_rgba(0,0,0,0.10)]
+
+    transition-all duration-300
+  "
+>
+  <h2 className="mb-3 text-lg font-semibold text-foreground sm:mb-4">
         Latest Articles
       </h2>
 
@@ -76,7 +92,22 @@ function LatestArticles() {
         {articles.map((article, index) => (
           <div
             key={index}
-            className={`rounded-xl border border-border p-4 transition-colors ${article.color}`}
+            className={`
+  rounded-2xl
+
+  border border-white/20 dark:border-white/5
+  backdrop-blur-md
+
+  p-4
+
+  shadow-[0_4px_18px_rgba(0,0,0,0.05)]
+  hover:shadow-[0_10px_28px_rgba(0,0,0,0.10)]
+
+  hover:-translate-y-1
+  transition-all duration-300
+
+  ${article.color}
+`}
           >
             <h3 className="font-medium text-foreground">
               {article.title}

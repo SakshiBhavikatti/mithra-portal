@@ -71,9 +71,22 @@ function ApplicationsGrid() {
   return (
     <section
       className={cn(
-        "flex min-h-0 flex-col rounded-2xl border border-border bg-card p-4 sm:p-5 hover:bg-accent/20",
-        "h-full max-lg:max-h-[min(70vh,520px)] lg:min-h-0 lg:flex-1"
-      )}
+  `
+    flex min-h-0 flex-col
+    rounded-3xl
+    bg-white/45 dark:bg-white/[0.03]
+    hover:bg-accent/20 dark:hover:bg-indigo-500/10
+    backdrop-blur-xl
+
+    p-4 sm:p-5
+
+    shadow-[0_8px_28px_rgba(0,0,0,0.06)]
+    hover:shadow-[0_12px_35px_rgba(0,0,0,0.10)]
+
+    transition-all duration-300
+  `,
+  "h-full max-lg:max-h-[min(70vh,520px)] lg:min-h-0 lg:flex-1"
+)}
     >
       <button
         type="button"
