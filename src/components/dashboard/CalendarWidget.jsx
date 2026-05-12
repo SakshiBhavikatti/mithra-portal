@@ -18,14 +18,15 @@ const reminders = [
 
 const cardColors = [
   {
-    bg: "bg-blue-50 dark:bg-blue-950/40",
-    iconBg: "bg-blue-100 dark:bg-blue-900/50",
-    iconColor: "text-blue-500 dark:text-blue-300",
+    bg: "bg-gradient-to-br from-[#F9FAFB]/95 to-[#FFF1F2]/80 dark:from-[#27272A]/95 dark:to-[#1C1C1E]/92",
+    iconBg: "bg-[#EB0A1E]/10 dark:bg-[#EB0A1E]/15",
+    iconColor: "text-[#EB0A1E] dark:text-[#FF6B75]",
   },
+
   {
-    bg: "bg-violet-50 dark:bg-violet-950/40",
-    iconBg: "bg-violet-100 dark:bg-violet-900/50",
-    iconColor: "text-violet-500 dark:text-violet-300",
+    bg: "bg-gradient-to-br from-[#FFF1F2]/95 to-white/90 dark:from-[#3A181B]/90 dark:to-[#1C1C1E]/95",
+    iconBg: "bg-[#EB0A1E]/12 dark:bg-[#EB0A1E]/18",
+    iconColor: "text-[#B00014] dark:text-[#FF4D5A]",
   },
 ];
 
@@ -77,16 +78,24 @@ function CalendarWidget() {
     <div
   className="
     flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden
+
     rounded-3xl
-    bg-white/45 dark:bg-white/[0.03]
-    hover:bg-accent/20 dark:hover:bg-indigo-500/10
-    backdrop-blur-xl
+
+    border border-white/30 dark:border-white/[0.06]
+
+    bg-white/55 dark:bg-[#1C1C1E]/70
+
+    backdrop-blur-2xl
+
     p-4 md:p-5
 
-    shadow-[0_8px_28px_rgba(0,0,0,0.06)]
-    hover:shadow-[0_12px_35px_rgba(0,0,0,0.10)]
+    shadow-[0_10px_35px_rgba(0,0,0,0.06)]
+    dark:shadow-[0_10px_35px_rgba(0,0,0,0.28)]
 
     transition-all duration-300
+
+    hover:border-[#EB0A1E]/10
+    hover:shadow-[0_18px_45px_rgba(235,10,30,0.10)]
   "
 >
   {/* Header */}
@@ -115,7 +124,7 @@ function CalendarWidget() {
       {/* Content — single scroll area on the widget (no nested scroll in inner panels) */}
       <div
         className={cn(
-          "min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain pr-1",
+          "min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain px-1 pb-2",
           "max-lg:max-h-[min(58vh,480px)]"
         )}
         style={{ perspective: "1200px" }}
@@ -132,16 +141,21 @@ function CalendarWidget() {
   w-full flex flex-col min-h-min
 
   rounded-3xl
-  border border-white/20 dark:border-white/5
-  backdrop-blur-md
 
-  shadow-[0_6px_24px_rgba(0,0,0,0.06)]
+  border border-white/30 dark:border-white/[0.06]
+
+  backdrop-blur-xl
+
+  shadow-[0_10px_30px_rgba(0,0,0,0.06)]
+  dark:shadow-[0_10px_30px_rgba(0,0,0,0.30)]
 
   p-4 md:p-5
 
   transition-all duration-300
+
   hover:-translate-y-1
-  hover:shadow-xl
+  hover:border-[#EB0A1E]/20
+  hover:shadow-[0_18px_40px_rgba(235,10,30,0.12)]
 
   ${color.bg}
 `}
@@ -212,19 +226,26 @@ function CalendarWidget() {
                         key={index}
                         className={cn(
                           `
-rounded-2xl
-border border-white/20 dark:border-white/5
-backdrop-blur-md
+rounded-3xl
+
+border border-white/30 dark:border-white/[0.06]
+
+backdrop-blur-xl
 
 p-3 md:p-4
 
 flex items-center gap-3 md:gap-4
 
-shadow-[0_4px_18px_rgba(0,0,0,0.05)]
-hover:shadow-[0_10px_28px_rgba(0,0,0,0.10)]
+shadow-[0_8px_22px_rgba(0,0,0,0.06)]
+dark:shadow-[0_8px_22px_rgba(0,0,0,0.24)]
+
+transition-all duration-300
 
 hover:-translate-y-1
-transition-all duration-300
+hover:scale-[1.01]
+
+hover:border-[#EB0A1E]/25
+hover:shadow-[0_16px_34px_rgba(235,10,30,0.16)]
 `,
                           t.cardBg
                         )}

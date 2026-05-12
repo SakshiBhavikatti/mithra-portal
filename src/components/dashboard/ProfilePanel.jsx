@@ -44,16 +44,34 @@ function ProfilePanel({ onClose }) {
       {/* Panel */}
       <div
         className="
-          fixed z-[55]
-          top-14 right-[max(0.5rem,env(safe-area-inset-right,0px))] sm:top-16 md:right-4
-          left-auto
-          w-[min(calc(100vw-1rem),18rem)] md:w-[95vw] md:max-w-80
-          h-auto max-h-[min(24rem,78dvh)] md:h-[calc(100vh-5rem)] md:max-h-[calc(100vh-5rem)]
-          bg-card border border-border
-          rounded-2xl md:rounded-3xl
-          shadow-2xl
-          flex flex-col overflow-hidden
-        "
+  fixed z-[55]
+
+  top-14 right-[max(0.5rem,env(safe-area-inset-right,0px))]
+  sm:top-16 md:right-4
+
+  left-auto
+
+  w-[min(calc(100vw-1rem),18rem)]
+  md:w-[95vw] md:max-w-80
+
+  h-auto
+  max-h-[min(24rem,78dvh)]
+  md:h-[calc(100vh-5rem)]
+  md:max-h-[calc(100vh-5rem)]
+
+  bg-[#ffffff]
+  dark:bg-[#1C1C1E]
+
+  border border-white/10 dark:border-white/6
+
+  rounded-2xl md:rounded-3xl
+
+  shadow-[0_20px_60px_rgba(0,0,0,0.45)]
+
+  backdrop-blur-2xl
+
+  flex flex-col overflow-hidden
+"
       >
         {/* Header */}
         <div className="sticky top-0 bg-card border-b border-border p-4 flex justify-between items-center shrink-0">
@@ -96,12 +114,19 @@ function ProfilePanel({ onClose }) {
                 <button
                   key={item.label}
                   className="
-                    w-full flex items-center gap-3 md:gap-4
-                    p-3 md:p-4
-                    rounded-2xl
-                    hover:bg-accent
-                    transition-all
-                  "
+  w-full flex items-center gap-3 md:gap-4
+
+  p-3 md:p-4
+
+  rounded-2xl
+
+  transition-all duration-300
+
+  hover:bg-[#EB0A1E]/10
+  dark:hover:bg-[#EB0A1E]/15
+
+  hover:border-[#EB0A1E]/20
+"
                 >
                   <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0">
                     <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />

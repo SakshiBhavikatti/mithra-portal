@@ -37,15 +37,37 @@ function Navbar() {
     <nav
       className="
         @container/nav
+        sticky top-0 z-40
+
         flex h-16 min-h-16 w-full min-w-0 items-center justify-between gap-2
-        border-b border-border px-3 backdrop-blur-md
+
+        border-b border-[#E5E7EB] dark:border-white/5
+
+        px-3
+        backdrop-blur-2xl
+
+        bg-gradient-to-r
+        from-[#FFF8F8]
+        via-[#FFFFFF]
+        to-[#FFF4F5]
+
+        dark:from-[#2B0B11]
+        dark:via-[#1C1C1E]
+        dark:to-[#2B0B11]
+
+        text-foreground
+        dark:text-white
+
         pt-[env(safe-area-inset-top,0px)]
+
+        shadow-[0_4px_20px_rgba(0,0,0,0.06)]
+        dark:shadow-[0_4px_20px_rgba(0,0,0,0.18)]
+
         sm:h-[72px] sm:min-h-[72px] sm:gap-3 sm:px-5
         md:gap-4 md:px-6
-        sticky top-0 z-40
       "
-      style={{ backgroundColor: "var(--background)" }}
     >
+      {/* Logo */}
       <div className="flex shrink-0 items-center pl-14 md:pl-0">
         <img
           src={toyotaNameLogo}
@@ -54,6 +76,7 @@ function Navbar() {
         />
       </div>
 
+      {/* Search */}
       <div className="relative min-w-0 max-w-lg flex-1">
         <Search className="pointer-events-none absolute left-4 top-1/2 size-[1.05rem] -translate-y-1/2 text-white/70 sm:left-4.5" />
 
@@ -61,51 +84,136 @@ function Navbar() {
           type="text"
           placeholder="Search..."
           className="
-            w-full min-w-0 rounded-xl border border-border
+            w-full min-w-0
+
+            rounded-2xl
+
+            border border-[#5C1720]/20
+            dark:border-white/10
+
+            bg-[#4B1119]
+            dark:bg-[#3A0E15]
+
             py-2.5 pl-11 pr-4
-            text-base text-white shadow-sm outline-none transition-all
-            placeholder:text-base placeholder:text-white/60
-            focus:ring-2 focus:ring-ring
+
+            text-base text-white
+
+            shadow-sm
+            outline-none
+
+            backdrop-blur-md
+
+            transition-all duration-300
+
+            placeholder:text-base
+            placeholder:text-white/55
+
+            hover:border-[#EB0A1E]/50
+            hover:bg-[#55141D]
+
+            focus:border-[#EB0A1E]
+            focus:ring-2
+            focus:ring-[#EB0A1E]/25
+
             sm:py-3 sm:pl-12 sm:pr-4
           "
-          style={{ backgroundColor: "var(--sidebar)" }}
         />
       </div>
 
+      {/* Actions */}
       <div className="flex shrink-0 items-center gap-2 sm:gap-3 md:gap-4">
+        {/* Theme Toggle */}
         <button
           type="button"
           onClick={toggleTheme}
-          className="relative flex h-8 w-14 shrink-0 items-center rounded-full border border-border bg-secondary px-1 transition-all duration-300 sm:h-9 sm:w-16"
+          className="
+            relative flex h-8 w-14 shrink-0 items-center
+
+            rounded-full
+
+            border border-[#5C1720]/20
+            dark:border-white/10
+
+            bg-[#4B1119]
+            dark:bg-[#3A0E15]
+
+            backdrop-blur-md
+            px-1
+
+            transition-all duration-300
+
+            hover:border-[#EB0A1E]/50
+            hover:shadow-[0_0_18px_rgba(235,10,30,0.18)]
+
+            sm:h-9 sm:w-16
+          "
         >
           <div
-            className={`flex size-6 items-center justify-center rounded-full bg-card shadow-md transition-transform duration-300 sm:size-7 ${
+            className={`flex size-6 items-center justify-center rounded-full bg-white shadow-md transition-transform duration-300 sm:size-7 ${
               darkMode ? "translate-x-6 sm:translate-x-7" : "translate-x-0"
             }`}
           >
             {darkMode ? (
-              <Moon className="size-4 text-primary" />
+              <Moon className="size-4 text-[#EB0A1E]" />
             ) : (
-              <Sun className="size-4 text-primary" />
+              <Sun className="size-4 text-[#EB0A1E]" />
             )}
           </div>
         </button>
 
+        {/* Notification */}
         <button
           type="button"
-          className="relative shrink-0 rounded-xl p-2 hover:bg-accent"
+          className="
+            relative shrink-0 rounded-xl p-2
+
+            border border-[#5C1720]/20
+            dark:border-white/10
+
+            bg-[#4B1119]
+            dark:bg-[#3A0E15]
+
+            text-white
+
+            transition-all duration-300
+
+            hover:border-[#EB0A1E]/45
+            hover:bg-[#5A1520]
+            hover:shadow-[0_0_18px_rgba(235,10,30,0.20)]
+          "
         >
-          <Bell className="size-6 text-foreground" />
+          <Bell className="size-5 sm:size-6 text-white" />
 
           <span className="absolute right-0.5 top-0.5 h-2.5 w-2.5 rounded-full bg-red-500"></span>
         </button>
 
+        {/* Profile */}
         <button
           type="button"
           onClick={() => setProfileOpen(!profileOpen)}
-          className="flex size-10 shrink-0 items-center justify-center rounded-full border border-border bg-card hover:bg-accent sm:size-11"
+          className="
+            flex size-10 shrink-0 items-center justify-center
+
+            rounded-full
+
+            border border-[#5C1720]/20
+            dark:border-white/10
+
+            bg-[#4B1119]
+            dark:bg-[#3A0E15]
+
+            backdrop-blur-md
+
+            transition-all duration-300
+
+            hover:border-[#EB0A1E]/45
+            hover:bg-[#5A1520]
+            hover:shadow-[0_0_18px_rgba(235,10,30,0.20)]
+
+            sm:size-11
+          "
         >
-          <User className="size-5 text-foreground sm:size-6" />
+          <User className="size-5 text-white sm:size-6" />
         </button>
 
         {profileOpen && (

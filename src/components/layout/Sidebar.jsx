@@ -82,7 +82,23 @@ function Sidebar() {
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="fixed left-3 top-3 z-50 rounded-xl bg-sidebar p-2 text-sidebar-foreground shadow-md md:hidden"
+          className="
+            fixed left-3 top-3 z-50
+
+            rounded-xl
+
+            bg-[#4B1119]
+
+            p-2
+
+            text-white
+
+            shadow-lg
+
+            border border-white/10
+
+            md:hidden
+          "
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -91,7 +107,7 @@ function Sidebar() {
       {/* Overlay */}
       {isMobile && mobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/40"
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
           onClick={() => setMobileOpen(false)}
         />
       )}
@@ -106,10 +122,22 @@ function Sidebar() {
         className={`
           fixed md:relative
           top-0 left-0 z-[60]
+
           flex h-screen shrink-0 flex-col overflow-hidden
-          bg-sidebar text-sidebar-foreground
-          border-r border-sidebar-border
+
+          bg-gradient-to-b
+          from-[#4A1119]
+          via-[#2B0B11]
+          to-[#161618]
+
+          text-white
+
+          border-r border-white/6
+
+          shadow-[8px_0_30px_rgba(0,0,0,0.30)]
+
           transition-all duration-300 ease-in-out
+
           ${
             isMobile
               ? mobileOpen
@@ -122,7 +150,7 @@ function Sidebar() {
         `}
       >
         {/* Logo */}
-        <div className="flex h-20 shrink-0 items-center justify-center border-b border-sidebar-border px-2">
+        <div className="flex h-20 shrink-0 items-center justify-center border-b border-white/5 px-2">
           <img
             src={toyotaIcon}
             alt="Toyota"
@@ -147,12 +175,33 @@ function Sidebar() {
                 }}
                 title={!expanded && !isMobile ? item.name : ""}
                 className={`
-                  w-full flex items-center gap-4 px-4 py-3 rounded-2xl
-                  transition-all duration-200
+                  group
+                  relative
+
+                  w-full flex items-center gap-4
+
+                  px-4 py-3
+
+                  rounded-2xl
+
+                  transition-all duration-300
+
                   ${
                     active === item.name
-                      ? "bg-sidebar-primary text-sidebar-primary-foreground"
-                      : "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                      ? `
+                        bg-[#EB0A1E]
+                        text-white
+                        shadow-[0_0_24px_rgba(235,10,30,0.30)]
+                      `
+                      : `
+                        text-white/80
+
+                        hover:bg-white/[0.08]
+                        hover:text-white
+
+                        hover:translate-x-[2px]
+                        hover:shadow-[0_0_20px_rgba(235,10,30,0.12)]
+                      `
                   }
                 `}
               >
@@ -177,7 +226,22 @@ function Sidebar() {
           {/* More */}
           <button
             onClick={() => setShowMore(!showMore)}
-            className="w-full flex items-center gap-4 px-4 py-3 rounded-2xl hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all"
+            className="
+              w-full flex items-center gap-4
+
+              px-4 py-3
+
+              rounded-2xl
+
+              text-white/80
+
+              transition-all duration-300
+
+              hover:bg-white/[0.08]
+              hover:text-white
+              hover:translate-x-[2px]
+              hover:shadow-[0_0_20px_rgba(235,10,30,0.12)]
+            "
           >
             <Ellipsis className="w-5 h-5 min-w-[20px]" />
 
