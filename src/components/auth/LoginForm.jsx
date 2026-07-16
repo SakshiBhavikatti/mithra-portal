@@ -1,9 +1,6 @@
 import { motion } from "framer-motion";
-function LoginForm() {
-  const handleLogin = () => {
-    localStorage.setItem("isAuthenticated", "true");
-    window.location.href = "/";
-  };
+
+function LoginForm({ onLogin }) {
   return (
     <motion.div
       initial={{
@@ -44,15 +41,18 @@ function LoginForm() {
           pointer-events-none
         "
       />
+
       <div className="relative z-10">
         <h2 className="text-3xl font-semibold tracking-tight text-white">
           Welcome Back
         </h2>
+
         <p className="mt-3 text-sm leading-relaxed text-white/65">
           Sign in securely using SAP Cloud Identity Services
         </p>
+
         <button
-          onClick={handleLogin}
+          onClick={onLogin}
           className="
             mt-8
             w-full
@@ -73,6 +73,7 @@ function LoginForm() {
         >
           Continue with SAP CIS
         </button>
+
         <div className="mt-6 flex justify-center">
           <button
             className="
@@ -89,4 +90,5 @@ function LoginForm() {
     </motion.div>
   );
 }
+
 export default LoginForm;

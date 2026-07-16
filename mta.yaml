@@ -1,0 +1,21 @@
+ID: mithra-portal
+_schema-version: "3.3"
+version: 1.0.0
+
+modules:
+  - name: mithra-approuter
+    type: approuter.nodejs
+    path: approuter
+    requires:
+      - name: mithra-xsuaa
+    build-parameters:
+      ignore:
+        - node_modules/
+
+resources:
+  - name: mithra-xsuaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: xs-security.json

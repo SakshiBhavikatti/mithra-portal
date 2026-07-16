@@ -1,7 +1,20 @@
 import { motion } from "framer-motion";
 import LoginForm from "@/components/auth/LoginForm";
 import toyotaLogo from "@/assets/toyota_icon_name.png";
+import { authConfig } from "@/auth/authConfig";
+
 function Login() {
+  const handleLogin = () => {
+    const loginUrl =
+      `${authConfig.authority}/oauth2/authorize` +
+      `?client_id=${authConfig.clientId}` +
+      `&response_type=code` +
+      `&redirect_uri=${encodeURIComponent(authConfig.redirectUri)}` +
+      `&scope=${encodeURIComponent(authConfig.scope)}`;
+
+    window.location.href = loginUrl;
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
       {/* Background Gradient */}
@@ -14,6 +27,7 @@ function Login() {
           to-black
         "
       />
+
       {/* Animated Red Glow Top */}
       <motion.div
         animate={{
@@ -36,6 +50,7 @@ function Login() {
           blur-3xl
         "
       />
+
       {/* Animated Red Glow Bottom */}
       <motion.div
         animate={{
@@ -58,6 +73,7 @@ function Login() {
           blur-3xl
         "
       />
+
       {/* Grid Overlay */}
       <div
         className="
@@ -67,6 +83,7 @@ function Login() {
           bg-[size:60px_60px]
         "
       />
+
       {/* Content */}
       <div
         className="
@@ -97,17 +114,21 @@ function Login() {
             alt="Toyota"
             className="h-26 w-auto object-contain"
           />
+
           <h1 className="mt-8 text-5xl font-bold tracking-tight text-white">
             Mithra Portal
           </h1>
+
           <p className="mt-4 max-w-md text-sm leading-relaxed text-white/65">
             Enterprise employee experience platform powered by SAP BTP
           </p>
         </motion.div>
+
         {/* Login Form */}
-        <LoginForm />
+        <LoginForm onLogin={handleLogin} />
       </div>
     </div>
   );
 }
+
 export default Login;
