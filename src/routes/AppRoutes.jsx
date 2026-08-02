@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import Dashboard from "@/pages/Dashboard";
 import Login from "@/pages/Login";
@@ -12,6 +12,9 @@ function AppRoutes() {
       {/* Public Routes */}
       <Route path="/login" element={<Login />} />
       <Route path="/auth/callback" element={<AuthCallback />} />
+
+      {/* Redirect legacy welcome file path */}
+      <Route path="/index.html" element={<Navigate to="/" replace />} />
 
       {/* Protected Dashboard */}
       <Route
